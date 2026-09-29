@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         @StringRes
         private val TAB_TITLES = intArrayOf(
             R.string.tab_text_1,
-            R.string.tab_text_2
+            R.string.tab_text_2,
+            R.string.tab_text_3
         )
     }
 
@@ -47,15 +48,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_home -> {
-                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                binding.viewPager.currentItem = 0
                 true
             }
             R.id.action_materi -> {
-                Toast.makeText(this, "Materi", Toast.LENGTH_SHORT).show()
+                binding.viewPager.currentItem = 1
                 true
             }
             R.id.action_quiz -> {
-                Toast.makeText(this, "Quiz", Toast.LENGTH_SHORT).show()
+                binding.viewPager.currentItem = 2
                 true
             }
             else -> super.onOptionsItemSelected(item)

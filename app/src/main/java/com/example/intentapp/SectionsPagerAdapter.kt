@@ -10,12 +10,13 @@ class SectionsPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(a
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = HomeFragment()
-            1 -> fragment = QuizFragment()
+            1 -> fragment = MateriFragment()
+            2 -> fragment = QuizFragment()
         }
         return fragment as Fragment
     }
 
     override fun getItemCount(): Int {
-        return 2
+        return 3
     }
 }

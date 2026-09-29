@@ -1,33 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="16dp"
-    android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".HomeFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Menu"
-        style="@style/CustomTextView18Bold"/>
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_oop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Materi OOP"
-        style="@style/CustomRoundedButton" />
+        <!-- Header Image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home_image"
+            android:background="@drawable/rounded_card_bg"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="Logo Praktikum" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_android"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Materi Android"
-        style="@style/CustomRoundedButton" />
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Praktikum PPPDB"
+            style="@style/CustomTextViewTitle"
+            android:layout_marginBottom="8dp" />
 
-</LinearLayout>
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pemrograman Platform dan Perangkat Bergerak"
+            style="@style/CustomTextViewSubtitle"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Deskripsi Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Deskripsi Kelas"
+                style="@style/CustomTextView18Bold"
+                android:gravity="start"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mata kuliah praktikum ini membahas tentang pengembangan aplikasi mobile menggunakan platform Android dengan bahasa pemrograman Kotlin. Mahasiswa akan mempelajari konsep dasar pemrograman Android, mulai dari pembuatan UI, penggunaan Intent, Fragment, hingga pengelolaan data."
+                style="@style/CustomTextViewSubtitle" />
+        </LinearLayout>
+
+        <!-- Info Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informasi Kelas"
+                style="@style/CustomTextView18Bold"
+                android:gravity="start"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📅  Pertemuan: Setiap Rabu\n👨‍🏫  Dosen: Sigit Hanafi\n📍  Ruang: Lab TRPL"
+                style="@style/CustomTextViewSubtitle" />
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_materi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lihat Materi"
+            style="@style/CustomRoundedButton"
+            android:layout_marginBottom="12dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_quiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mulai Quiz"
+            style="@style/CustomRoundedButtonGreen" />
+
+    </LinearLayout>
+</ScrollView>

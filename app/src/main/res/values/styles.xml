@@ -3,12 +3,34 @@
     <style name="CustomRoundedButton" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/rounded_button</item>
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomRoundedButtonGreen" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/rounded_button_green</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="CustomTextView18Bold" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CustomTextViewTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#1A237E</item>
+    </style>
+
+    <style name="CustomTextViewSubtitle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#757575</item>
+        <item name="android:lineSpacingExtra">4dp</item>
     </style>
 </resources>

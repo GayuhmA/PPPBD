@@ -1,11 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
     tools:context=".QuizFragment">
+
+    <!-- Icon Warning -->
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:text="📝"
+        android:textSize="48sp"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Title -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Quiz" />
-</FrameLayout>
+        android:layout_height="wrap_content"
+        android:text="Quiz Belum Tersedia"
+        style="@style/CustomTextViewTitle"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Warning Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_warning_bg"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Informasi"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#E65100"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quiz untuk mata kuliah Praktikum PPPDB belum dilaksanakan. Silakan pantau terus informasi terbaru dari dosen pengampu mengenai jadwal pelaksanaan quiz."
+            android:textSize="14sp"
+            android:textColor="#BF360C"
+            android:lineSpacingExtra="4dp" />
+    </LinearLayout>
+
+    <!-- Info Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_card_bg"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Persiapan Quiz"
+            style="@style/CustomTextView18Bold"
+            android:gravity="start"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pelajari materi pertemuan 1 - 6\nPahami konsep Layout dan View\nKuasai Activity dan Intent\nLatihan membuat project Android"
+            style="@style/CustomTextViewSubtitle" />
+    </LinearLayout>
+
+    <!-- Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kembali ke Home"
+        style="@style/CustomRoundedButton" />
+
+</LinearLayout>
