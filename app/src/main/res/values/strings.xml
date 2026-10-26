@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">IntentApp</string>
+    <string name="app_name">MyShop</string>
+    <string name="title_home">Home</string>
+    <string name="title_cart">Keranjang</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_checkout">Checkout</string>
+    <string name="title_address">Alamat</string>
+    <string name="product_samsung_m22">Samsung M22</string>
+    <string name="buy_now">Beli Sekarang</string>
+    <string name="done">Selesai</string>
+    <string name="select_province">Pilih provinsi</string>
+
+    <string-array name="provinces">
+        <item>Aceh</item>
+        <item>Bali</item>
+        <item>Banten</item>
+        <item>Bengkulu</item>
+        <item>Gorontalo</item>
+        <item>Jakarta</item>
+        <item>Jambi</item>
+        <item>Jawa Barat</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+    </string-array>
 </resources>

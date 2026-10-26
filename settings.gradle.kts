@@ -1,4 +1,7 @@
 pluginManagement {
+    plugins {
+        id("androidx.navigation.safeargs.kotlin") version "2.9.4"
+    }
     repositories {
         google {
             content {
@@ -19,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "IntentApp"
+rootProject.name = "MyShop"
 include(":app")

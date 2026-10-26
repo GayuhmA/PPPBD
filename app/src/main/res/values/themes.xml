@@ -1,9 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.IntentApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<resources>
+    <style name="Base.Theme.MyShop" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/shop_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
-    <style name="Theme.IntentApp" parent="Base.Theme.IntentApp" />
+    <style name="Theme.MyShop" parent="Base.Theme.MyShop" />
 </resources>
