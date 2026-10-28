@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Android: Build APK",
+            "type": "process",
+            "command": "./gradlew",
+            "windows": { "command": ".\\gradlew.bat" },
+            "args": [":app:assembleDebug"],
+            "group": { "kind": "build", "isDefault": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "Android: Install APK",
+            "type": "process",
+            "command": "./gradlew",
+            "windows": { "command": ".\\gradlew.bat" },
+            "args": [":app:installDebug"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Android: Jalankan",
+            "type": "process",
+            "command": "adb",
+            "args": ["shell", "am", "start", "-n", "com.example.intentapp/.MainActivity"],
+            "dependsOn": "Android: Install APK",
+            "problemMatcher": []
+        },
+        {
+            "label": "Android: Lint",
+            "type": "process",
+            "command": "./gradlew",
+            "windows": { "command": ".\\gradlew.bat" },
+            "args": [
+                "-Dorg.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=768m -Dfile.encoding=UTF-8",
+                "--max-workers=2",
+                ":app:lintDebug"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Android: Test UI",
+            "type": "process",
+            "command": "./gradlew",
+            "windows": { "command": ".\\gradlew.bat" },
+            "args": [":app:connectedDebugAndroidTest"],
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}
