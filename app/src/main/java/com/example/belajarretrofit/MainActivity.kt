@@ -1,10 +1,12 @@
 package com.example.belajarretrofit
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.belajarretrofit.databinding.ActivityMainBinding
+import com.example.belajarretrofit.model.Data
 import com.example.belajarretrofit.model.Users
 import com.example.belajarretrofit.network.ApiClient
 import retrofit2.Call
@@ -22,24 +24,40 @@ class MainActivity : AppCompatActivity() {
 
         val client = ApiClient.getInstance()
         val response = client.getAllUsers()
-        val userList = ArrayList<String>()
+
+        val rawUsersList = ArrayList<Data>()
+        val userNamesList = ArrayList<String>()
 
         response.enqueue(object : Callback<Users> {
             override fun onResponse(call: Call<Users>, response: Response<Users>) {
                 if (response.isSuccessful && response.body() != null) {
-                    val usersData = response.body()?.data
+                    val usersData = response.body()?.data ?: emptyList()
 
-                    if (usersData != null) {
-                        for (i in usersData) {
-                            i.employeeName?.let { userList.add(it) }
+                    rawUsersList.clear()
+                    userNamesList.clear()
+
+                    for (user in usersData) {
+                        rawUsersList.add(user)
+                        userNamesList.add(user.employeeName ?: "Tanpa Nama")
+                    }
+
+                    val listAdapter = ArrayAdapter(
+                        this@MainActivity,
+                        android.R.layout.simple_list_item_1,
+                        userNamesList
+                    )
+                    binding.lvNama.adapter = listAdapter
+
+                    binding.lvNama.setOnItemClickListener { _, _, position, _ ->
+                        val selectedUser = rawUsersList[position]
+
+                        val intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
+                            putExtra("EXTRA_ID", selectedUser.id ?: 0)
+                            putExtra("EXTRA_NAME", selectedUser.employeeName ?: "-")
+                            putExtra("EXTRA_AGE", selectedUser.employeeAge ?: 0)
+                            putExtra("EXTRA_SALARY", selectedUser.employeeSalary ?: 0)
                         }
-
-                        val listAdapter = ArrayAdapter(
-                            this@MainActivity,
-                            android.R.layout.simple_list_item_1,
-                            userList
-                        )
-                        binding.lvNama.adapter = listAdapter
+                        startActivity(intent)
                     }
                 } else {
                     Toast.makeText(
@@ -51,11 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Users>, t: Throwable) {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Koneksi error: ${t.message}",
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(this@MainActivity, "Koneksi Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
