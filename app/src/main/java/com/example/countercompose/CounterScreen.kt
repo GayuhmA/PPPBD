@@ -1,9 +1,11 @@
 package com.example.countercompose
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -12,19 +14,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.countercompose.ui.theme.CounterComposeTheme
-import androidx.compose.runtime.getValue
-//import androidx.compose.runtime.mutableIntStateOf
-//import androidx.compose.runtime.remember
-//import androidx.compose.runtime.setValue
-//import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.lifecycle.viewmodel.compose.viewModel
-
+import com.example.countercompose.ui.theme.CounterComposeTheme
 
 @Composable
 fun CounterApp(
     modifier: Modifier = Modifier,
-    viewModel: CounterViewModel = viewModel()
+    viewModel: CounterViewModel = viewModel(),
+    onNextClick: () -> Unit = {}
 ) {
     val counter by viewModel.counter
     CounterScreen(
@@ -32,6 +29,7 @@ fun CounterApp(
         onIncrement = { viewModel.increment() },
         onDecrement = { viewModel.decrement() },
         onReset = { viewModel.reset() },
+        onNext = onNextClick, // FIX 1: Sambungkan event onNextClick ke CounterScreen
         modifier = modifier
     )
 }
@@ -42,6 +40,7 @@ fun CounterScreen(
     onIncrement: () -> Unit,
     onDecrement: () -> Unit,
     onReset: () -> Unit,
+    onNext: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -64,7 +63,8 @@ fun CounterScreen(
         CounterButtons(
             onDecrement = onDecrement,
             onIncrement = onIncrement,
-            onReset = onReset
+            onReset = onReset,
+            onNext = onNext
         )
     }
 }
@@ -98,7 +98,8 @@ fun CounterDisplay(value: Int, modifier: Modifier = Modifier) {
 fun CounterButtons(
     onDecrement: () -> Unit = {},
     onIncrement: () -> Unit = {},
-    onReset: () -> Unit = {}
+    onReset: () -> Unit = {},
+    onNext: () -> Unit = {}
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
@@ -152,9 +153,16 @@ fun CounterButtons(
             Spacer(Modifier.width(ButtonDefaults.IconSpacing))
             Text("RESET")
         }
+        Spacer(modifier = Modifier.height(8.dp))
+        Button(
+            onClick = onNext,
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF9C27B0))
+        ) {
+            Text("NEXT")
+        }
     }
 }
-
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -164,7 +172,8 @@ fun CounterScreenPreview() {
             counter = 7,
             onIncrement = {},
             onDecrement = {},
-            onReset = {}
+            onReset = {},
+            onNext = {}
         )
     }
 }
